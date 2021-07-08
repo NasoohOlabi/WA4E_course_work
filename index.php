@@ -14,14 +14,13 @@
         $add = '<p><a href="add.php">Add New Entry</a></p>';
     }
 
-    function flashThisSessionAtter ($str){
+    function flashSessionAttribute ($str,$color = "green"){
         if ( isset($_SESSION[$str]) ) {
-            echo('<p style="color:green">'.$_SESSION[$str]."</p>\n");
+            echo("<p style=\"color:$color\">".$_SESSION[$str]."</p>\n");
             unset($_SESSION[$str]);
         }  
     }
-    $pdo = new PDO('mysql:host=localhost;port=3306;dbname=misc', 'nasooh', 'olabi');
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    require_once("pdo.php");
     try{
         $stmt = $pdo->prepare("SELECT * FROM profile ");
         $stmt->execute();
@@ -83,8 +82,8 @@ require_once('head.php');
 </head>
 <body>
 <div class="container">
-<h1>Nasooh Olabi - Nassouh Yaser AlOlabi</h1>
-<?php flashThisSessionAtter("success");flashThisSessionAtter("error"); ?>
+<h1>A Template. By Nasooh Al-Olabi</h1>
+<?php flashSessionAttribute("success");flashSessionAttribute("error","red"); ?>
 <?= $status ?>
 <?php
 if (isset($_SESSION['error'])){

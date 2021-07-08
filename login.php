@@ -5,9 +5,9 @@ if ( isset($_POST['cancel'] ) ) {
     header("Location: index.php");
     return;
 }
-function flashThisSessionAtter ($str){
+function flashThisSessionAtter ($str , $color = "red"){
     if ( isset($_SESSION[$str]) ) {
-        echo('<p style="color:red">'.$_SESSION[$str]."</p>\n");
+        echo("<p style=\"color:$color\">".$_SESSION[$str]."</p>\n");
         unset($_SESSION[$str]);
     }  
 }
@@ -24,12 +24,11 @@ $stored_hash = '1a52e17fa899cf40fb04cfc42e6352f1'; // pass is php123
 #$stored_hash = 'a8609e8d62c043243c4e201cbb342862';  // pass is meow123
 #$stored_hash = '5874dc20209b5ed27c0d87aba5702ae5'; // pass is umsi
 
-
 $failure = false;  // If we have no POST data
+
 session_start();
 
-$pdo = new PDO('mysql:host=localhost;port=3306;dbname=misc', 'nasooh', 'olabi');
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+require_once("pdo.php");
 
 
 // Check to see if we have some POST data, if we do process it
