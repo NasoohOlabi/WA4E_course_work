@@ -1,11 +1,6 @@
 <?php
 session_start();
-function flashThisSessionAtter ($str){
-    if ( isset($_SESSION[$str]) ) {
-        echo('<p style="color:red">'.$_SESSION[$str]."</p>\n");
-        unset($_SESSION[$str]);
-    }  
-}
+require_once('util.php');
 function f ($s){
     if ( isset($_POST[$s])){
         $_SESSION[$s] = $_POST[$s];
@@ -176,7 +171,7 @@ else
 <div class="container">
 <h1>Adding Profile for UMSI</h1>
 <?php 
-    flashThisSessionAtter('error');
+    flashSessionAttribute('error','red');
 ?>
 <form method="post">
 <p>First Name:

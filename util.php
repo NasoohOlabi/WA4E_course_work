@@ -5,4 +5,14 @@ function flashSessionAttribute ($str,$color = "green"){
 		unset($_SESSION[$str]);
 	}  
 }
+$ACCESS_DENIED = "<!DOCTYPE html>
+<html>
+<head>
+<title>ACCESS DENIED</title>
+</head>
+<body>
+ACCESS DENIED
+</body>
+</html>";
+
 ?>
