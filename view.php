@@ -1,11 +1,6 @@
 <?php
 session_start();
-function flashThisSessionAtter ($str){
-    if ( isset($_SESSION[$str]) ) {
-        echo('<p style="color:red">'.$_SESSION[$str]."</p>\n");
-        unset($_SESSION[$str]);
-    }  
-}
+
 if (!isset($_GET['profile_id']) ){
     $_SESSION['error'] = 'Missing profile_id';
     header("Location: index.php");
@@ -31,20 +26,10 @@ else
 ?><!DOCTYPE html>
 <html>
 <head>
-<title> 5e680791     Nasooh Olabi - Nassouh Yaser AlOlabi's Profile View</title>
-<!-- bootstrap.php - this is HTML -->
 
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" 
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" 
-    integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" 
-    crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" 
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" 
-    integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" 
-    crossorigin="anonymous">
+<?php
+require_once('head.php');
+?>
 
 </head>
 <body>

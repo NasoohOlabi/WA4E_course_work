@@ -14,12 +14,7 @@
         $add = '<p><a href="add.php">Add New Entry</a></p>';
     }
 
-    function flashSessionAttribute ($str,$color = "green"){
-        if ( isset($_SESSION[$str]) ) {
-            echo("<p style=\"color:$color\">".$_SESSION[$str]."</p>\n");
-            unset($_SESSION[$str]);
-        }  
-    }
+    include 'util.php';
     require_once("pdo.php");
     try{
         $stmt = $pdo->prepare("SELECT * FROM profile ");
